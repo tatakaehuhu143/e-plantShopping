@@ -10,6 +10,7 @@ function ProductList({ onHomeClick }) {
     const [addedToCart, setAddedToCart] = useState({})
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart.items)
+    const totalQuantity = cart.reduce((sum,item)=>sum+(item.quantity || 1),0)
     const handleAddToCart = (plant)=> {
         const alreadyInCart = cart.find(item=>item.name===plant.name)
         if (!alreadyInCart){
